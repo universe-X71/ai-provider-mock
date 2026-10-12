@@ -1,0 +1,29 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: ai-provider-mock
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        ip: 127.0.0.1        # <-- 关键：强制使用宿主机 IP
+        port: 8081
+        username: nacos
+        password: nacos
+        group: DEFAULT_GROUP
+        ephemeral: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.alibaba.cloud.nacos: info
